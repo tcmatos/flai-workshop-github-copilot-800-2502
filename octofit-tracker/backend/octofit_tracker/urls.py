@@ -22,6 +22,14 @@ from .views import (
     LeaderboardViewSet, WorkoutViewSet
 )
 
+# Resolve the base URL from the Codespace environment variable so that
+# all API endpoint references use the correct public HTTPS origin.
+codespace_name = os.environ.get('CODESPACE_NAME')
+if codespace_name:
+    base_url = f"https://{codespace_name}-8000.app.github.dev"
+else:
+    base_url = "http://localhost:8000"
+
 router = DefaultRouter()
 router.register(r'users', UserViewSet)
 router.register(r'teams', TeamViewSet)
