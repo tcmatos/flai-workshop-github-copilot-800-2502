@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 
-const BASE_URL = `https://${process.env.REACT_APP_CODESPACE_NAME}-8000.app.github.dev`;
+const apiUrl      = `https://${process.env.REACT_APP_CODESPACE_NAME}-8000.app.github.dev/api/users/`;
+const teamsApiUrl = `https://${process.env.REACT_APP_CODESPACE_NAME}-8000.app.github.dev/api/teams/`;
 
 function Users() {
   const [users, setUsers]   = useState([]);
@@ -14,9 +15,6 @@ function Users() {
   const [saving, setSaving]         = useState(false);
   const [saveError, setSaveError]   = useState(null);
   const [saveSuccess, setSaveSuccess] = useState(false);
-
-  const apiUrl      = `${BASE_URL}/api/users/`;
-  const teamsApiUrl = `${BASE_URL}/api/teams/`;
 
   // ── Data fetching ──────────────────────────────────────────────────────────
   const fetchData = useCallback(() => {
