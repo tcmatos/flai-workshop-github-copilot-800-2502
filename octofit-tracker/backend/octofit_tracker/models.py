@@ -44,6 +44,7 @@ class Leaderboard(models.Model):
     _id = models.ObjectIdField()
     username = models.CharField(max_length=100)
     score = models.IntegerField()
+    calories = models.IntegerField(default=0)
 
     class Meta:
         db_table = 'leaderboard'

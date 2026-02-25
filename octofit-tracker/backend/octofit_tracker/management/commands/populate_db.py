@@ -70,16 +70,16 @@ class Command(BaseCommand):
 
         # Create Leaderboard
         leaderboard_data = [
-            {'username': 'ironman', 'score': 950},
-            {'username': 'spiderman', 'score': 880},
-            {'username': 'captainamerica', 'score': 920},
-            {'username': 'thor', 'score': 870},
-            {'username': 'blackwidow', 'score': 860},
-            {'username': 'batman', 'score': 940},
-            {'username': 'superman', 'score': 990},
-            {'username': 'wonderwoman', 'score': 910},
-            {'username': 'theflash', 'score': 850},
-            {'username': 'aquaman', 'score': 830},
+            {'username': 'ironman',        'score': 950, 'calories': 450},
+            {'username': 'spiderman',      'score': 880, 'calories': 390},
+            {'username': 'captainamerica', 'score': 920, 'calories': 520},
+            {'username': 'thor',           'score': 870, 'calories': 480},
+            {'username': 'blackwidow',     'score': 860, 'calories': 430},
+            {'username': 'batman',         'score': 940, 'calories': 400},
+            {'username': 'superman',       'score': 990, 'calories': 510},
+            {'username': 'wonderwoman',    'score': 910, 'calories': 440},
+            {'username': 'theflash',       'score': 850, 'calories': 350},
+            {'username': 'aquaman',        'score': 830, 'calories': 470},
         ]
         for data in leaderboard_data:
             entry = Leaderboard(**data)
