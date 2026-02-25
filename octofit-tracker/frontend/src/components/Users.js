@@ -72,6 +72,7 @@ function Users() {
     setEditUser(user);
     setFormData({
       username: user.username,
+      name:     user.name || '',
       email:    user.email,
       password: '',
       teamId:   currentTeam ? currentTeam._id : '',
@@ -90,7 +91,7 @@ function Users() {
     setSaveSuccess(false);
     try {
       // 1. PATCH user details
-      const userPayload = { username: formData.username, email: formData.email };
+      const userPayload = { username: formData.username, name: formData.name, email: formData.email };
       if (formData.password) userPayload.password = formData.password;
 
       const userRes = await fetch(`${apiUrl}${editUser._id}/`, {
@@ -192,6 +193,7 @@ function Users() {
               <thead className="table-dark">
                 <tr>
                   <th>#</th>
+                  <th>Name</th>
                   <th>Username</th>
                   <th>Email</th>
                   <th>Team</th>
@@ -204,7 +206,8 @@ function Users() {
                   return (
                     <tr key={user._id || idx}>
                       <td className="text-muted">{idx + 1}</td>
-                      <td><span className="fw-semibold">{user.username}</span></td>
+                      <td><span className="fw-semibold">{user.name || <span className="text-muted fst-italic">—</span>}</span></td>
+                      <td>{user.username}</td>
                       <td><a href={`mailto:${user.email}`} className="link-secondary">{user.email}</a></td>
                       <td>
                         {team
@@ -242,6 +245,18 @@ function Users() {
                   {saveError && <div className="alert alert-danger py-2">{saveError}</div>}
                   {saveSuccess && <div className="alert alert-success py-2">Saved successfully!</div>}
                   <form onSubmit={e => { e.preventDefault(); handleSave(); }}>
+                    <div className="mb-3">
+                      <label htmlFor="edit-name" className="form-label fw-semibold">Full Name</label>
+                      <input
+                        id="edit-name"
+                        name="name"
+                        type="text"
+                        className="form-control"
+                        value={formData.name}
+                        onChange={handleChange}
+                        placeholder="e.g. Tony Stark"
+                      />
+                    </div>
                     <div className="mb-3">
                       <label htmlFor="edit-username" className="form-label fw-semibold">Username</label>
                       <input

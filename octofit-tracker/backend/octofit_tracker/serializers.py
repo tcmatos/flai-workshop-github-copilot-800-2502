@@ -36,7 +36,7 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ['_id', 'username', 'email', 'password']
+        fields = ['_id', 'username', 'name', 'email', 'password']
 
     def get__id(self, obj):
         return str(obj._id) if obj._id else None
